@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
+
+# Runtime data and local config (may hold secrets later)
+data/
+config.toml
+
+# Personal Claude Code settings
+.claude/settings.local.json
+CLAUDE.local.md

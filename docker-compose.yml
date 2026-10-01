@@ -1,0 +1,24 @@
+services:
+  brief:
+    build: .
+    image: crosspoint-brief:latest
+    restart: unless-stopped
+    # Must own ./data on the NAS: `id -u` / `id -g` of the DSM user that created the folder.
+    user: "${BRIEF_UID:-1000}:${BRIEF_GID:-1000}"
+    environment:
+      TZ: Asia/Seoul
+    volumes:
+      - ./config:/config:ro
+      - ./data:/data
+
+  web:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    depends_on:
+      - brief
+    # LAN only. Do not forward this port on the router.
+    ports:
+      - "8080:80"
+    volumes:
+      - ./data/www:/usr/share/nginx/html:ro
+      - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf:ro

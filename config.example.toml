@@ -1,0 +1,39 @@
+# crosspoint-brief settings (P0-1).
+# Copy to config.toml and edit. In P0-3 these move to the Synology web admin page;
+# this file then only seeds the first run.
+
+[paths]
+# Relative paths resolve against this file's folder. Docker overrides with BRIEF_DATA_DIR.
+data_dir = "data"
+
+[publish]
+time = "06:30"          # local time to build the brief
+retry_time = "07:00"    # one retry if the 06:30 run failed
+timezone = "Asia/Seoul"
+slug = "am"             # publication id prefix: am-2026-10-02
+title = "아침 브리핑"
+author = "CrossPoint Brief"
+article_count = 12      # chapters in the "main articles" part
+skim_count = 30         # titles listed in "제목만 훑어보기"
+window_hours = 24       # only items first seen / published within this window
+summary_max_chars = 600 # rule-based summary budget per article
+keep_publications = 14  # EPUBs kept on the server and listed in OPDS
+
+[collect]
+interval_minutes = 60
+timeout_seconds = 20
+user_agent = "crosspoint-brief/0.1 (personal reader; +https://github.com/jhjh0512)"
+
+[filter]
+exclude_keywords = []   # case-insensitive, matched against title and summary
+
+[[sources]]
+id = "geeknews"
+name = "GeekNews"
+connector = "rss"
+url = "https://news.hada.io/rss/news"
+weight = 1.0
+max_per_day = 20
+language = "ko"
+ai_allowed = true
+enabled = true

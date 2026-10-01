@@ -1,0 +1,42 @@
+[project]
+name = "crosspoint-brief"
+version = "0.1.0"
+description = "Personal morning brief publisher for CrossPoint e-ink readers (OPDS + EPUB)"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "feedparser>=6.0.11",
+    "httpx>=0.28",
+    "tzdata>=2025.2",
+]
+
+[project.scripts]
+brief = "brief.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "ruff>=0.8",
+]
+
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/brief"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]  # the formatter wraps code; long SQL and XHTML template lines stay readable
+
+[tool.ruff.lint.isort]
+known-first-party = ["brief", "conftest"]

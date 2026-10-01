@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Synthetic feed shaped like news.hada.io/rss/news (titles and text are made up). -->
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko">
+  <title>Sample News</title>
+  <id>https://news.example.kr/</id>
+  <updated>2026-10-01T21:10:00+09:00</updated>
+  <link href="https://news.example.kr/"/>
+  <entry>
+    <title>예시 프로젝트 1.0 공개 &amp; 성능 2배 개선</title>
+    <link href="https://news.example.kr/topic?id=101"/>
+    <id>https://news.example.kr/topic?id=101</id>
+    <updated>2026-10-01T20:31:47+09:00</updated>
+    <author><name>writer</name></author>
+    <content type="html"><![CDATA[<ul><li>첫 번째 요점입니다&nbsp;설명이 이어짐</li><li>두 번째 요점 <a href="https://example.com/a?utm_source=x">링크</a></li><li>세 번째 요점...</li></ul><script>alert(1)</script>]]></content>
+  </entry>
+  <entry>
+    <title>두 번째 글</title>
+    <link href="https://news.example.kr/topic?id=102"/>
+    <id>https://news.example.kr/topic?id=102</id>
+    <updated>2026-10-01T18:00:00+09:00</updated>
+    <content type="html"><![CDATA[<p>짧은 요약 문단.</p>]]></content>
+  </entry>
+</feed>
